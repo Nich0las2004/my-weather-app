@@ -4,8 +4,17 @@ button {
   border-radius: 5px;
 }
 
-.info{
+.info > h3{
   /* background:red; */
+  border: 1px solid black;
+  height:2rem;
+  display: flex; 
+  align-items: center
+}
+
+.info > h3 > img{
+  width:3rem;
+  height:2rem;
 }
 
 form {
