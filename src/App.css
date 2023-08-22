@@ -5,9 +5,7 @@ button {
 }
 
 .info > h3{
-  /* background:red; */
-  border: 1px solid black;
-  height:2rem;
+  height:3rem;
   display: flex; 
   align-items: center
 }
