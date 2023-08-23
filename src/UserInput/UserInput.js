@@ -1,6 +1,8 @@
+import classes from './UserInput.module.css'
+
 const UserInput = ({ fetchHandler, latitude, longitude }) => {
   return (
-    <form onSubmit={fetchHandler}>
+    <form className={classes.form} onSubmit={fetchHandler}>
       <label htmlFor="latitude">Enter a latitude:</label>
       <input
         defaultValue="38.897957"
@@ -19,7 +21,7 @@ const UserInput = ({ fetchHandler, latitude, longitude }) => {
         type="text"
         required
       />
-      <button>Fetch</button>
+      <button className={classes.button}>Fetch</button>
     </form>
   );
 };

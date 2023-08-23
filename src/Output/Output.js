@@ -1,6 +1,8 @@
+import classes from './Output.module.css'
+
 const Output = ({info, flagURL}) => {
   return (
-    <div className="info">
+    <div className={classes.info}>
       <h3>Name: {info.name}</h3>
       <h3 style={{ display: "flex", alignItems: "center" }}>
         Country: <img src={flagURL} alt={`${info.sys.country} Flag`} />
