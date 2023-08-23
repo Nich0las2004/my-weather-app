@@ -1,10 +1,13 @@
-import classes from './UserInput.module.css'
+import classes from "./UserInput.module.css";
 
 const UserInput = ({ fetchHandler, latitude, longitude }) => {
   return (
     <form className={classes.form} onSubmit={fetchHandler}>
-      <label htmlFor="latitude">Enter a latitude:</label>
+      <label 
+      className={classes.labels}
+      htmlFor="latitude">Enter a latitude:</label>
       <input
+        className={classes.inputs}
         defaultValue="38.897957"
         placeholder="Latitude"
         ref={latitude}
@@ -12,8 +15,11 @@ const UserInput = ({ fetchHandler, latitude, longitude }) => {
         type="text"
         required
       />
-      <label htmlFor="longitude">Enter a longitude:</label>
+      <label 
+      className={classes.labels}
+      htmlFor="longitude">Enter a longitude:</label>
       <input
+        className={classes.inputs}
         defaultValue="-77.036560"
         placeholder="Longitude"
         ref={longitude}
