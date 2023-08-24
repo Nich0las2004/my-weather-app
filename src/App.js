@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
-import UserInput from "./UserInput/UserInput";
-import Output from "./Output/Output";
+import SpinnerLoading from "./templates/SpinnerLoading/SpinnerLoading";
+import UserInput from "./templates/UserInput/UserInput";
+import Output from "./templates/Output/Output";
 
 import "./App.css";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [info, setInfo] = useState();
   const [btnClicked, setBtnClicked] = useState(false);
   // country flag
@@ -20,6 +21,7 @@ const App = () => {
   const fetchHandler = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude.current.value}&lon=${longitude.current.value}&appid=${apiKey}`
       );
@@ -33,14 +35,19 @@ const App = () => {
       );
       setFlagURL(reponseFlag.data[0].flags.png);
       setBtnClicked(true);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
 
+  const loadingState = btnClicked && isLoading;
+  const fetchedState = btnClicked && !isLoading;
+
   return (
     <div className="container">
-      {btnClicked && <Output info={info} flagURL={flagURL} />}
+      {loadingState && <SpinnerLoading />}
+      {fetchedState && <Output info={info} flagURL={flagURL} />}
       {!btnClicked && (
         <UserInput
           fetchHandler={fetchHandler}
